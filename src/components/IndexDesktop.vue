@@ -18,8 +18,8 @@
           <form id="productosform">
 
             <div class="form-group">
-              <label for="">Tel Cliente</label>
-              <input id="telefono" type="number" class="form-control" />
+              <Label required="1"> Tel Cliente </Label>
+              <Input type="number" />
             </div>
 
             <div class="form-group">
@@ -107,6 +107,8 @@
 <script>
 import Select2 from 'vue3-select2-component'
 import json from '../database/productos.json'
+import Input from '@/components/ComponentsVuexy/Input.vue'
+import Label from '@/components/ComponentsVuexy/Label.vue'
 export default {
   data() {
     return {
@@ -127,7 +129,9 @@ export default {
     }
   },
   components: {
-    Select2
+    Select2,
+    Input,
+    Label
   }
 }
 </script>

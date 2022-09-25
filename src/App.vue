@@ -1,14 +1,11 @@
 <template>
   <!-- <HelloWorld msg="Welcome to Your Vue.js App"/> -->
   <IndexDesktop />
-  <Postgres />
   <span> {{ message }} </span>
 </template>
 
 <script>
-// import HelloWorld from './components/HelloWorld.vue'
 import IndexDesktop from './components/IndexDesktop.vue'
-import Postgres from './components/pg_js/app.js'
 
 export default {
   name: 'App',
@@ -18,9 +15,7 @@ export default {
     }
   },
   components: {
-    // HelloWorld,
     IndexDesktop,
-    Postgres
   }
 }
 </script>
