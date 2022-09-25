@@ -1,0 +1,51 @@
+.navegar{
+    background-color: #012357;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0%;
+}
+
+.navegar > div {
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  button {
+    padding: 0 15px;
+    border: none;
+    background: transparent;
+    outline: none;
+  }
+  .img{
+    height: 13vh;
+    width: 15vh;
+    margin: 0%;
+  }
+
+.letraBlanca{
+    color: white;
+}
+
+.azulOscuro{
+    background-color: #033c73;
+}
+
+.fondoBlanco{
+    background-color: rgb(205, 231, 255);
+    padding: 5vh;
+}
+.container{
+    padding: 5vh;
+}
+.form-group{
+    padding-bottom: 2vh;
+}
+.tableNueva{
+
+}
+th{
+    color: white;
+}
