@@ -1,124 +1,151 @@
 <template>
-  <div class="azulOscuro">
-    <nav class="navbar navbar-light navegar">
-      <div class="left" role="menu">
-        <!-- <a class="navbar-brand" href="#"><img src="./logolavamar.png" class=" img rounded-start mx-2" alt="..." /></a> -->
+  <AppLayoutVuexy>
+    <div class="row">
+      <div class="col-12 col-md-6">
+        <Label required="1">Clientes</Label>
+        <Select2 v-model="cod_cliente" :options="clients" :settings="{placeholder: 'Seleccione'}"
+          @select="cliente=$event.id" />
       </div>
-      <div class="right">
-        <button class="menubar-btn letraBlanca" id="minimize-btn">Crear Factura</button>
-        <button class="menubar-btn letraBlanca" id="max-unmax-btn">Ver Facturas</button>
+      <div class="col-12 col-md-6">
+        <Label required="1">Producto</Label>
+        <Select2 v-model="pedido.cod_product" :options="products" :settings="{placeholder: 'Seleccione'}"
+          @select="productod=$event.id" />
       </div>
-    </nav>
-  </div>
 
-  <div class="container">
-    <div class="fondoBlanco">
-      <div class="row">
-        <div class="col-3">
-          <form id="productosform">
-
-            <div class="form-group">
-              <Label required="1"> Tel Cliente </Label>
-              <Input type="number" />
-            </div>
-
-            <div class="form-group">
-              <label for="">Producto</label>
-              <Select2 :options="products" />
-              <!-- <select id="producto" step="any" class="form-select">
-                <option value="">Seleccione</option>
-              </select> -->
-            </div>
-
-            <div class="form-group">
-              <label for="">Cantidad</label>
-              <input id="cantidad" type="number" class="form-control" />
-            </div>
-
-            <div class="form-group">
-              <button class="btn btn-primary form-control">
-                Agregar
-              </button>
-            </div>
-          </form>
-        </div>
-
-
-        <div class="col-9">
-          <div class="cont my-4">
-            <div class="row m-4 table-wrapper-scroll-y my-custom-scrollbar">
-              <table class="tableNueva table-hover table-sm bg-primary">
-                <thead>
-                  <tr>
-                    <th scope="col">Nombre</th>
-                    <th scope="col">Cantidad</th>
-                    <th scope="col">Precio Unidad</th>
-                    <th scope="col">Total</th>
-                    <th scope="col">Eliminar</th>
-                  </tr>
-                </thead>
-                <tbody id="equipos-tabla">
-
-                </tbody>
-              </table>
-            </div>
-            <div class="container">
-              <div class="row centrado">
-                <div class="col-6 col-md-3">
-                  <div class="form-group">
-                    <label class="form-control" id="valor" for="">Valor Total</label>
-                  </div>
-                </div>
-                <div class="col-6 col-md-6">
-                  <div class="form-group">
-                    <label for="" id="valorTotal" class="form-control">$ </label>
-
-                  </div>
-                </div>
-                <!-- <div class="col-6 col-md-3">
-                    <form id="eliminarProductos">
-                    <div class="form-group">
-                      <button  class="btn btn-danger">Eliminar</button>
-                    </div>
-                    </form>
-                  </div>-->
-                <div class="col-6 col-md-3">
-                  <form id="guardarFactura">
-                    <div class="form-group">
-                      <button class="btn btn-primary">Pedir Domicilio</button>
-                    </div>
-                  </form>
-                  <div class="col-6 col-md-3">
-                    <form id="eliminarProductos">
-                      <div class="form-group">
-                        <button class="btn btn-danger">Eliminar</button>
-                      </div>
-                    </form>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+      <div class="col-12 col-md-6">
+      </div>
+      <div class="col-12 col-md-6">
+        <Label required="1">Cantidad</Label>
+        <Input type="number" v-model="pedido.quantity" />
       </div>
     </div>
-  </div>
+    <div class="d-flex justify-content-center">
+      <Button @click="agregarP()" class="mt-2"> Agregar </Button>
+    </div>
+
+    <div class="table-responsive my-4">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Producto</th>
+            <th>Cantidad</th>
+            <th>Precio Unidad</th>
+            <th>Total</th>
+            <th>Eliminar</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr v-for="(i, index) in pedidos" :key="index">
+            <td>{{ i.nom_product }}</td>
+            <td>{{ i.quantity }}</td>
+            <td>{{ (i.price) }}</td>
+            <td>{{ (i.total) }}</td>
+            <td> <Button @click="destroy(index)"> Eliminar </Button> </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="row">
+      <div class="col-12 col-md-6">
+        <div class="form-group">
+          <Label class="me-3">Valor Total</Label>
+          <Label>{{(calcular_total())}}</Label>
+        </div>
+      </div>
+      <div class="d-flex justify-content-center mt-2">
+        <Button @click="store()">Generar factura</Button>
+      </div>
+    </div>
+  </AppLayoutVuexy>
 </template>
 <script>
-import Select2 from 'vue3-select2-component'
-import json from '../database/productos.json'
-import Input from '@/components/ComponentsVuexy/Input.vue'
-import Label from '@/components/ComponentsVuexy/Label.vue'
+import Label from "./ComponentsVuexy/Label.vue";
+import Button from "./ComponentsVuexy/Button.vue";
+import Input from "./ComponentsVuexy/Input.vue";
+import Select2 from 'vue3-select2-component';
+import json_products from '@/database/productos.json'
+import json_clients from '@/database/clients.json'
 export default {
+  props: {
+  },
   data() {
     return {
-      products: json,
-    }
+      cantidad: 0,
+      id: 0,
+      pedido: { cod_product: '', quantity: '' },
+      pedidos: [],
+      total: 0,
+      cod_cliente: 0,
+      factura: {},
+      products: json_products,
+      clients: json_clients,
+    };
+  },
+  components: {
+    Select2,
+    Label,
+    Button,
+    Input
   },
   created() {
     this.map_productos_json()
+    this.map_clients_json()
   },
+
   methods: {
+    agregarP() {
+      let pedido = {}
+      for (const key in this.pedido) {
+        if (this.pedido[key]) pedido[key] = this.pedido[key]
+        else {
+          Swal.fire('error', 'Completa todos los campos', 'error')
+          return
+        }
+      }
+      pedido.price = this.params_product(pedido.cod_product, 'price')
+      pedido.nom_product = this.params_product(pedido.cod_product, 'text')
+      pedido.total = pedido.price * pedido.quantity
+      this.pedidos.push(pedido)
+      this.limpiar_campos()
+    },
+    limpiar_campos() {
+      for (const key in this.pedido) this.pedido[key] = ''
+    },
+    destroy(index) {
+      this.pedidos.splice(index, 1);
+    },
+    store() {
+      let factura = {
+        pedidos: this.pedidos,
+        cod_cliente: this.cod_cliente,
+        total: this.total,
+      };
+      axios.post(route("empleados.factura.generar"), factura).then((res) => {
+        if (res.data.status == 422) {
+          alert(res.data.msg);
+        } else if (res.data.status == 200) {
+          alert(res.data.msg);
+        }
+      });
+    },
+    params_product(cod_product, column) {
+      let response = ''
+      this.products.filter((item) => {
+        if (item.id == cod_product) {
+          response = item[column]
+        }
+      });
+      return response
+    },
+    calcular_total() {
+      let total = 0
+      this.pedidos.forEach(element => {
+        console.log('element ==> ', element)
+        total += element.total
+      });
+      this.total = total
+      return total
+    },
     map_productos_json() {
       let products = this.products
       this.products = []
@@ -126,12 +153,15 @@ export default {
       products.forEach(item => {
         this.products.push({ id: item.cod_product, text: item.name_product })
       });
-    }
+    },
+    map_clients_json() {
+      let clients = this.clients
+      this.clients = []
+
+      clients.forEach(item => {
+        this.clients.push({ id: item.cod_client, text: item.usuario?.name })
+      });
+    },
   },
-  components: {
-    Select2,
-    Input,
-    Label
-  }
-}
+};
 </script>
