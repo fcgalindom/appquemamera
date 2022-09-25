@@ -1,14 +1,14 @@
 <template>
   <AppLayoutVuexy>
-    <div class="row">
+    <div class="container-fluid row">
       <div class="col-12 col-md-6">
         <Label required="1">Clientes</Label>
-        <Select2 v-model="cod_cliente" :options="clients" :settings="{placeholder: 'Seleccione'}"
+        <Select2 v-model="cod_cliente" :options="clients" :settings="{placeholder: 'Seleccione', width: '100%'}"
           @select="cliente=$event.id" />
       </div>
       <div class="col-12 col-md-6">
         <Label required="1">Producto</Label>
-        <Select2 v-model="pedido.cod_product" :options="products" :settings="{placeholder: 'Seleccione'}"
+        <Select2 v-model="pedido.cod_product" :options="products" :settings="{placeholder: 'Seleccione', width: '100%'}"
           @select="productod=$event.id" />
       </div>
 
@@ -164,12 +164,12 @@ export default {
       });
     },
     parseVillegas(value = '0') {
-            let response = parseInt(value).toLocaleString('es-CO')
-            if(response) {
-                return '$' + response
-            }else {
-                return '0'
-            }
+      let response = parseInt(value).toLocaleString('es-CO')
+      if (response) {
+        return '$' + response
+      } else {
+        return '0'
+      }
     }
   },
 };
