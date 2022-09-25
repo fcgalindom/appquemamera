@@ -9,7 +9,8 @@
     "electron:build": "vue-cli-service electron:build",
     "electron:serve": "vue-cli-service electron:serve",
     "postinstall": "electron-builder install-app-deps",
-    "postuninstall": "electron-builder install-app-deps"
+    "postuninstall": "electron-builder install-app-deps",
+    "start": "electron-packager ."
   },
   "main": "background.js",
   "dependencies": {
@@ -41,6 +42,10 @@
     "vue-loader": "^17.0.0",
     "vue-template-compiler": "^2.7.10"
   },
+  "nsis": {
+    "allowToChangeInstallationDirectory": true,
+    "oneClick": false
+  },
   "eslintConfig": {
     "root": true,
     "env": {
@@ -60,5 +65,18 @@
     "last 2 versions",
     "not dead",
     "not ie 11"
-  ]
+  ],
+  "development": {
+    "build": {
+      "appId": "myvuelectron.id",
+      "producName": "electron test app",
+      "target": "NSIS",
+      "directory": {
+        "BUILD_RESOURCES_DIR": "build"
+      },
+      "windows": {
+        "category": "your.app.category.type"
+      }
+    }
+  }
 }
