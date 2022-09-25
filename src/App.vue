@@ -1,7 +1,6 @@
 <template>
   <!-- <HelloWorld msg="Welcome to Your Vue.js App"/> -->
   <IndexDesktop />
-  <span> {{ message }} </span>
 </template>
 
 <script>

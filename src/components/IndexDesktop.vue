@@ -38,8 +38,8 @@
           <tr v-for="(i, index) in pedidos" :key="index">
             <td>{{ i.nom_product }}</td>
             <td>{{ i.quantity }}</td>
-            <td>{{ (i.price) }}</td>
-            <td>{{ (i.total) }}</td>
+            <td>{{ parseVillegas(i.price) }}</td>
+            <td>{{ parseVillegas(i.total) }}</td>
             <td> <Button @click="destroy(index)"> Eliminar </Button> </td>
           </tr>
         </tbody>
@@ -132,6 +132,7 @@ export default {
       let response = ''
       this.products.filter((item) => {
         if (item.id == cod_product) {
+          console.log('item[column] ==> ', item[column]);
           response = item[column]
         }
       });
@@ -151,7 +152,7 @@ export default {
       this.products = []
 
       products.forEach(item => {
-        this.products.push({ id: item.cod_product, text: item.name_product })
+        this.products.push({ id: item.cod_product, text: item.name_product, price: item.price })
       });
     },
     map_clients_json() {
@@ -162,6 +163,14 @@ export default {
         this.clients.push({ id: item.cod_client, text: item.usuario?.name })
       });
     },
+    parseVillegas(value = '0') {
+            let response = parseInt(value).toLocaleString('es-CO')
+            if(response) {
+                return '$' + response
+            }else {
+                return '0'
+            }
+    }
   },
 };
 </script>
