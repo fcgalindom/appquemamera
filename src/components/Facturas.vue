@@ -46,8 +46,8 @@
             <strong class="text-start">Se encontraron un total de {{ conteo }} registros</strong>
         </div>
 
-        <div class="container-fluid table-responsive text-center  bg-table-gen" style="font-size: 0.9rem">
-            <table class="table">
+        <div class="container-fluid table-responsive bg-table-gen" style="font-size: 0.9rem">
+            <table class="table text-center" id="data-table">
                 <thead>
                     <tr>
                         <th>Cliente</th>
@@ -92,8 +92,8 @@
         <!-- </section> -->
 
 
-       
-        
+
+
     </AppLayoutVuexy>
 </template>
 
@@ -103,6 +103,7 @@
 import Select2 from "vue3-select2-component";
 import { defineComponent } from "vue";
 import facturas_json from '@/database/facturas.json'
+import "datatables.net-bs4";
 export default defineComponent({
     props: {
         // empleados: Array,
@@ -136,12 +137,12 @@ export default defineComponent({
             details: []
         };
     },
-    created() {
+    mounted() {
         this.getResults();
     },
     methods: {
         getResults() {
-            console.log('this.facturas ==> ', this.facturas)
+            this.tabla('data-table')
             // axios
             //     .post(route("administrador.factura.list"), this.filters)
             //     .then((res) => {
@@ -175,7 +176,7 @@ export default defineComponent({
                 allowOutsideClick: false,
             }).then(async (result) => {
                 if (result.isConfirmed) {
-                    axios.post(route("administrador.factura.delete"), { cod_bill:i.cod_bill }).then((res) => {
+                    axios.post(route("administrador.factura.delete"), { cod_bill: i.cod_bill }).then((res) => {
                         this.$alert(res.data)
                         this.getResults();
                     });
@@ -187,29 +188,72 @@ export default defineComponent({
                 this.details = res.data
                 this.$openModal('show_bill')
             })
-        }
-    },
-    eliminar(i) {
-        axios
-            .post(route("administrador.factura.delete"), { cod_bill: i.cod_bill })
-            .then((res) => {
-                this.$alert(res.data);
-                this.getResults();
-            });
-    },
+        },
+        eliminar(i) {
+            axios
+                .post(route("administrador.factura.delete"), { cod_bill: i.cod_bill })
+                .then((res) => {
+                    this.$alert(res.data);
+                    this.getResults();
+                });
+        },
 
-    llenarModal(i) {
-        for (const key in this.form) this.form[key] = i[key];
-        this.$openModal("exampleModal");
+        llenarModal(i) {
+            for (const key in this.form) this.form[key] = i[key];
+            this.$openModal("exampleModal");
+        },
+        parseVillegas(value = '0') {
+            let response = parseInt(value).toLocaleString('es-CO')
+            if (response) {
+                return '$' + response
+            } else {
+                return '0'
+            }
+        },
+        tabla(tablaId) {
+            $("#" + tablaId).DataTable().destroy();
+            this.$nextTick(() => {
+                $("#" + tablaId).DataTable({
+                    //    destroy:true,
+                    searching: true,
+                    language: {
+                        "sProcessing": "Procesando...",
+                        "sLengthMenu": "Mostrar _MENU_ registros",
+                        "sZeroRecords": "No se encontraron resultados",
+                        "sEmptyTable": "Ningún dato disponible en esta tabla",
+                        "sInfo": "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
+                        "sInfoEmpty": "Mostrando registros del 0 al 0 de un total de 0 registros",
+                        "sInfoFiltered": "(filtrado de un total de _MAX_ registros)",
+                        "sInfoPostFix": "",
+                        "sSearch": "Buscar:",
+                        "sUrl": "",
+                        "sInfoThousands": ",",
+                        "sLoadingRecords": "Cargando...",
+                        "oPaginate": {
+                            "sFirst": "Primero",
+                            "sLast": "Último",
+                            "sNext": "Siguiente",
+                            "sPrevious": "Anterior"
+                        },
+                        "oAria": {
+                            "sSortAscending": ": Activar para ordenar la columna de manera ascendente",
+                            "sSortDescending": ": Activar para ordenar la columna de manera descendente"
+                        }
+                    },
+                    initComplete: function () {
+                        $("#tabla_contacts_wrapper > .row").addClass("w-100");
+                        $("#tabla_contacts_wrapper > .row > .col-xs-12.col-md-6").addClass(
+                            "col-lg-6 text-left"
+                        );
+                        $("#tabla_contacts_wrapper .row")
+                            .eq(1)
+                            .find(".col-xs-12")
+                            .addClass("w-100");
+                    },
+                });
+            });
+        },
     },
-    parseVillegas(value = '0') {
-        let response = parseInt(value).toLocaleString('es-CO')
-        if (response) {
-            return '$' + response
-        } else {
-            return '0'
-        }
-    }
 
 });
 </script>
