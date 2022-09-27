@@ -65,6 +65,8 @@ import Input from "./ComponentsVuexy/Input.vue";
 import Select2 from 'vue3-select2-component';
 import json_products from '@/database/productos.json'
 import json_clients from '@/database/clients.json'
+// import '@/database/conection.js'
+
 export default {
   props: {
   },
@@ -114,13 +116,22 @@ export default {
     destroy(index) {
       this.pedidos.splice(index, 1);
     },
+    
     store() {
       let factura = {
+        
         pedidos: this.pedidos,
+
         cod_cliente: this.cod_cliente,
+
         total: this.total,
+
       };
-      axios.post(route("empleados.factura.generar"), factura).then((res) => {
+    
+
+
+
+      axios.post("http://127.0.0.1:8000/api/cFactura", factura).then((res) => {
         if (res.data.status == 422) {
           alert(res.data.msg);
         } else if (res.data.status == 200) {
@@ -132,7 +143,6 @@ export default {
       let response = ''
       this.products.filter((item) => {
         if (item.id == cod_product) {
-          console.log('item[column] ==> ', item[column]);
           response = item[column]
         }
       });

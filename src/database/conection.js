@@ -24,36 +24,102 @@ client.connect();
 
 
 
-const getProductos = async () => {
+// const getProductos = async () => {
 
-  try {
-    const res = await client.query('select * from products');
+//   try {
+//     const res = await client.query('select * from products');
 
-    data = res.rows;
-    return data;
-    client.end();
-  } catch (e) {
-    console.log(e);
-  }
-};
+//     data = res.rows;
+//     return data;
+//     client.end();
+//   } catch (e) {
+//     console.log(e);
+//   }
+// };
 
 const fs = require("fs/promises");
+
 const path = require("path");
 const console = require('console');
+const { default: axios } = require('axios');
 
 const pathJson = path.join(__dirname, "./productos.json")
 const pathFacturaJson = path.join(__dirname, "./factura.json")
+const pathJsonFacturas = path.join(__dirname, "./facturas.json");
+const pathClienteJson = path.join(__dirname, "./clients.json");
+
+
+const getClients = () =>{
+ 
+    axios.get('http://127.0.0.1:8000/api/clientes').then(res=>{
+  
+
+       writeJsonClientes(res.data);
+    })
+
+
+    // return JSON.parse(dataCliente);
+}
+
+const getFacturas = () =>{
+ 
+  axios.get('http://127.0.0.1:8000/api/vFactura').then(res=>{
+
+
+    writeJsonFacturas(res.data);
+  })
+
+
+  // return JSON.parse(dataCliente);
+}
+
+const getProductos = () =>{
+  
+  axios.get('http://127.0.0.1:8000/api/productos').then(res=>{
+
+
+     writeJsonProductos(res.data);
+  })
+
+
+  // return JSON.parse(dataCliente);
+}
+
+const getFactura = () =>{
+
+
+  axios.get('http://127.0.0.1:8000/api/vFactura').then(res=>{
+
+
+     writeJsonProductos(res.data);
+  })
+
+
+  // return JSON.parse(dataCliente);
+}
+
+
 
 const readFactura = () => {
 
   const data = fs.readFile(pathFacturaJson, "utf-8")
   return data;
 }
-const writeJson = async (escribir) => {
+const writeJsonProductos = async (escribir) => {
 
   fs.writeFile(pathJson, JSON.stringify(escribir, null, 4), "utf-8");
 
 }
+
+const writeJsonFacturas = async (escribir)=>{
+
+  fs.writeFile(pathJsonFacturas, JSON.stringify(escribir, null, 4), "utf-8");
+    
+    
+    
+      
+}
+
 
 const writeJsonFactura = (escribir) => {
 
@@ -64,43 +130,54 @@ const writeJsonFactura = (escribir) => {
 
 }
 
+const writeJsonClientes = (escribir) => {
+
+
+  fs.writeFile(pathClienteJson, JSON.stringify(escribir, null, 4), "utf-8");
 
 
 
-
-
-
-
-
-getProductos().then((data) => {
-  console.log(data);
-  writeJson(data);
-});
-
-
-
-
-
-function sumar() {
-
-  console.log("dos");
 }
 
+getClients();
 
 
 
 
-module.exports = {
-  sumar,
-  client
-};
+getProductos();
+
+getFacturas();
+
+
+
+
+
+
+
+
+
+// getProductos().then((data) => {
+//   console.log(data);
+//   writeJson(data);
+// });
+
+
+
+
+
+
+
+
+
+
+
 //// Arreglar
 
-let identificadorIntervaloDeTiempo;
+//let identificadorIntervaloDeTiempo;
 
-function repetirCadaSegundo() {
-  identificadorIntervaloDeTiempo = setInterval(mandarMensaje, 1000);
-}
+//function repetirCadaSegundo() {
+  //identificadorIntervaloDeTiempo = setInterval(mandarMensaje, 1000);
+//}
 
 function mandarMensaje() {
 
@@ -178,7 +255,7 @@ function mandarMensaje() {
 
 }
 
-repetirCadaSegundo();
+
 
 
 
