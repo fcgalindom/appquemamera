@@ -3,7 +3,7 @@
         <div class="container mb-3">
             <div class="row mt-4 mb-3">
                 <div class="col-9 col-sm-8 col-md-10">
-                    <h5 class="d-inline">Facturas</h5>
+                    <h5 class="text-start  letraAzul"><strong>Ver Facturas</strong></h5>
                 </div>
                 <div class="col-3 col-sm-4 col-md-2 text-end">
                     <div class="d-grid gap-2"></div>

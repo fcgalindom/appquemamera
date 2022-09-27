@@ -43,9 +43,104 @@
 .form-group{
     padding-bottom: 2vh;
 }
-.tableNueva{
 
-}
 th{
     color: white;
+}
+
+.selects{
+    width: 80%;
+    height: 80%;
+}
+.cuerpo {
+    background-color: #07215c;
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+
+  .centrado{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .fullScreen{
+    height: 100vh;
+  }
+
+  .MedScreen{
+    height: 70vh;
+  }
+  .my-custom-scrollbar {
+    position: relative;
+    height: 200px;
+    overflow: auto;
+    }
+    .table-wrapper-scroll-y {
+    display: block;
+    }
+
+  .fondoBlanco{
+    background-color: white;
+  }
+
+  .azul{
+    background-color: #07215c;
+    color: white !important;
+  }
+  .azul h3, .azul h4, .azul h5, .azul h6{
+    color: white !important;
+  }
+
+  .azulClaro{
+    background-color: #72c8e1;
+  }
+
+  .azulMedio{
+    background-color: #d7eff6;
+  }
+  .azulitoPastel{
+    background-color: #c2f1ff;
+  }
+
+  .letra{
+    font-size: 1.4em;
+  }
+
+  .bg-table-gen {
+    border-color: #012357;
+  }
+  .bg-table-gen th {
+    background-color: #045b9e !important;
+    color: white;
+}
+
+.bg-table-gen td {
+    background-color: white !important;
+    color: black;
+}
+
+.bg-light{
+    background-color: #f1f1f1df !important;
+}
+
+  .imagen{
+    height: 30vh;
+  }
+
+  .imagenPeque{
+    height: 15vh;
+  }
+
+.botones{
+    background-color: #0d76c7 !important;
+    color: white !important;
+}
+
+.botonRojo{
+    background-color: #c73434d7 !important;
+    color: white !important;
+}
+.letraAzul{
+    color: #045b9e ;
 }

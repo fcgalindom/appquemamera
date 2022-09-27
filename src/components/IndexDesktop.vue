@@ -1,29 +1,53 @@
 <template>
   <AppLayoutVuexy>
-    <div class="container-fluid row">
-      <div class="col-12 col-md-6">
-        <Label required="1">Clientes</Label>
-        <Select2 v-model="cod_cliente" :options="clients" :settings="{placeholder: 'Seleccione', width: '100%'}"
-          @select="cliente=$event.id" />
-      </div>
-      <div class="col-12 col-md-6">
-        <Label required="1">Producto</Label>
-        <Select2 v-model="pedido.cod_product" :options="products" :settings="{placeholder: 'Seleccione', width: '100%'}"
-          @select="productod=$event.id" />
+    <div class="container ">
+      <div class="row mt-4 ">
+        <div class="col-9 col-sm-8 col-md-10">
+          <h5 class="text-start  letraAzul"><strong>Crear Facturas</strong></h5>
+        </div>
+        <div class="container ">
+          <div class="row">
+            <div class="col-12 col-md-6">
+              <div class="form-group">
+                <Select2 v-model="cod_cliente" :options="clients" :settings="{placeholder: 'Clientes', width: '100%'}"
+                  @select="cliente=$event.id" />
+              </div>
+            </div>
+
+            <div class="col-12 col-md-6">
+              <div class="form-group">
+                <Select2 v-model="pedido.cod_product" :options="products"
+                  :settings="{placeholder: 'Productos', width: '100%'}" @select="productod=$event.id" />
+              </div>
+            </div>
+            <div class="col-12 col-md-6">
+
+            </div>
+            <div class="col-12 col-md-5">
+              <div class="form-group">
+                <Input type="number" v-model="pedido.quantity" placeholder="Cantidad" />
+              </div>
+            </div>
+            <div class="col-12 col-md-1 ">
+              <div class="">
+              <Button @click="agregarP()" class="botones"> Agregar </Button>
+            </div>
+            </div>
+
+
+          </div>
+
+
+        </div>
       </div>
 
-      <div class="col-12 col-md-6">
-      </div>
-      <div class="col-12 col-md-6">
-        <Label required="1">Cantidad</Label>
-        <Input type="number" v-model="pedido.quantity" />
-      </div>
-    </div>
-    <div class="d-flex justify-content-center">
-      <Button @click="agregarP()" class="mt-2"> Agregar </Button>
     </div>
 
-    <div class="table-responsive my-4">
+
+
+
+
+    <div class="container-fluid table-responsive text-center  bg-table-gen " style="font-size: 0.9rem">
       <table class="table">
         <thead>
           <tr>
@@ -40,7 +64,7 @@
             <td>{{ i.quantity }}</td>
             <td>{{ parseVillegas(i.price) }}</td>
             <td>{{ parseVillegas(i.total) }}</td>
-            <td> <Button @click="destroy(index)"> Eliminar </Button> </td>
+            <td> <Button @click="destroy(index)" class="botonRojo"> Eliminar </Button> </td>
           </tr>
         </tbody>
       </table>
@@ -53,7 +77,7 @@
         </div>
       </div>
       <div class="d-flex justify-content-center mt-2">
-        <Button @click="store()">Generar factura</Button>
+        <Button @click="store()" class="botones">Generar factura</Button>
       </div>
     </div>
   </AppLayoutVuexy>
@@ -116,10 +140,10 @@ export default {
     destroy(index) {
       this.pedidos.splice(index, 1);
     },
-    
+
     store() {
       let factura = {
-        
+
         pedidos: this.pedidos,
 
         cod_cliente: this.cod_cliente,
@@ -127,7 +151,7 @@ export default {
         total: this.total,
 
       };
-    
+
 
 
 
