@@ -155,7 +155,7 @@ export default {
 
 
 
-      axios.post("http://127.0.0.1:8000/api/cFactura", factura).then((res) => {
+      axios.post("https://infinite-basin-30570.herokuapp.com/api/cFactura", factura).then((res) => {
         if (res.data.status == 422) {
           alert(res.data.msg);
         } else if (res.data.status == 200) {

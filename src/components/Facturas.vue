@@ -5,41 +5,11 @@
                 <div class="col-9 col-sm-8 col-md-10">
                     <h5 class="text-start  letraAzul"><strong>Ver Facturas</strong></h5>
                 </div>
-                <div class="col-3 col-sm-4 col-md-2 text-end">
-                    <div class="d-grid gap-2"></div>
-                </div>
+
             </div>
             <div class="container">
-                <div class="row mb-3">
-                    <div class="col-12 col-md-3">
-                        <div class="form-group">
-                            <label for="">Cliente</label>
-                            <input type="text" class="form-control" v-model="filters.cliente" />
-                        </div>
-                    </div>
-                    <div class="col-12 col-md-3">
-                        <div class="form-group">
-                            <label for="">Empleado</label>
-                            <input type="text" class="form-control" v-model="filters.empleado" />
-                        </div>
-                    </div>
-                    <div class="col-12 col-md-3">
-                        <div class="form-group">
-                            <label for="">Fecha</label>
-                            <input type="date" class="form-control" v-model="filters.fecha" />
-                        </div>
-                    </div>
-                    <div class="col-12 col-md-3">
-                        <div class="form-group">
-                            <label for="">Estado</label>
-                            <Select2 v-model="filters.estado" :options="states"
-                                :settings="{ width: '100%', placeholder: 'Seleccione' }" />
-                        </div>
-                    </div>
-                </div>
-                <div class="col-12 d-flex justify-content-center align-items-center mb-3">
-                    <Button @click="getResults()">Buscar</Button>
-                </div>
+
+
             </div>
         </div>
         <div class="container-fluid mb-1">
@@ -55,8 +25,6 @@
                         <th>Valor Total</th>
                         <th>Estado</th>
                         <th>Fecha</th>
-                        <th>Editar</th>
-                        <th>Eliminar</th>
                         <th>Ver</th>
                     </tr>
                 </thead>
@@ -67,20 +35,15 @@
                         <td>{{ (i?.total_bill) }}</td>
                         <td>{{ i?.estado?.name_state }}</td>
                         <td>{{ i?.created_at }}</td>
+
                         <td>
-                            <ButtonSinFondo @click="llenarModal(i)">
-                                <font-awesome-icon icon="fa-solid fa-pencil" />
-                            </ButtonSinFondo>
-                        </td>
-                        <td>
-                            <ButtonSinFondo @click="eliminar(i)">
-                                <font-awesome-icon icon="fa-solid fa-trash-can" />
-                            </ButtonSinFondo>
-                        </td>
-                        <td>
-                            <ButtonSinFondo @click="detalles(i)">
-                                <font-awesome-icon icon="fa-solid fa-eye" />
-                            </ButtonSinFondo>
+                            <!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                                data-bs-target="#exampleModal">
+                                Launch demo modal
+                            </button> -->
+                            <Button @click="detalles(i)" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                Ver
+                            </Button>
                         </td>
                     </tr>
                 </tbody>
@@ -88,7 +51,30 @@
             <!-- <pagination :users="patients" @pagi="getResults($event)" /> -->
         </div>
 
-        <foot />
+        <!-- <Modal id="show_bill" title="Detalle Factura"> -->
+        <Modal id="exampleModal" title="Detalle Factura">
+            <div class="flex-column ">
+                <table class="table bg-table-gen">
+
+                    <tbody>
+                        <tr>
+                            <th>Producto</th>
+                            <th>Precio Unidad</th>
+                            <th>Cantidad</th>
+                            <th>Valor Total</th>
+                        </tr>
+                        <tr v-for="(i,index) in details" :key="index">
+                            <td> {{i.product?.name_product}}</td>
+                            <td> {{i.num_product}} </td>
+                            <td>{{ parseVillegas(i.product?.price)}}</td>
+                            <td>{{ parseVillegas(i.val_product)}} </td>
+
+                        </tr>
+                    </tbody>
+                </table>
+
+            </div>
+        </Modal>
         <!-- </section> -->
 
 
@@ -101,6 +87,9 @@
 <script>
 // import ButtonSinFondo from "@/ComponentsVuexy/ButtonSinFondo.vue";
 import Select2 from "vue3-select2-component";
+import Button from "./ComponentsVuexy/Button.vue";
+
+import Modal from "./ComponentsVuexy/Modal.vue";
 import { defineComponent } from "vue";
 import facturas_json from '@/database/facturas.json'
 import "datatables.net-bs4";
@@ -116,7 +105,8 @@ export default defineComponent({
         Select2,
         // AppLayoutVuexy,
         // ButtonSinFondo,
-        // Button,
+        Modal,
+        Button,
     },
     data() {
         return {
@@ -152,11 +142,11 @@ export default defineComponent({
         },
         editar() {
             axios.post(route("administrador.factura.update"), this.form).then((res) => {
-                this.$alert(res.data)
-                this.$closeModal('exampleModal')
+              
                 this.getResults();
             });
         },
+
         llenarModal(i) {
             for (const key in this.form) this.form[key] = i[key]
             this.$openModal('exampleModal')
@@ -184,9 +174,11 @@ export default defineComponent({
             })
         },
         detalles(i) {
-            axios.post(route('administrador.factuas.show'), { id: i.cod_bill }).then(res => {
+
+            axios.post('https://infinite-basin-30570.herokuapp.com/api/factura-detalles', { id: i.cod_bill }).then(res => {
                 this.details = res.data
-                this.$openModal('show_bill')
+                console.log(this.details);
+                //this.$openModal('show_bill')
             })
         },
         eliminar(i) {
