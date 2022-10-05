@@ -5,6 +5,8 @@
         role="tab" aria-controls="nav-home" aria-selected="true">Ver Factura</button>
       <button class="nav-link" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button"
         role="tab" aria-controls="nav-profile" aria-selected="false">Crear Factura</button>
+      <button class="nav-link" id="nav-cliente-tab" data-bs-toggle="tab" data-bs-target="#nav-cliente" type="button"
+        role="tab" aria-controls="nav-cliente" aria-selected="false">Crear Cliente</button>
       <!-- <button class="nav-link" id="nav-contact-tab" data-bs-toggle="tab" data-bs-target="#nav-contact" type="button"
         role="tab" aria-controls="nav-contact" aria-selected="false">Contact</button> -->
     </div>
@@ -16,6 +18,9 @@
     <div class="tab-pane fade pb-3" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
       <IndexDesktop />
     </div>
+    <div class="tab-pane fade pb-3" id="nav-cliente" role="tabpanel" aria-labelledby="nav-cliente-tab">
+      <Cliente />
+    </div>
     <!-- <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">...</div> -->
   </div>
   <!-- <HelloWorld msg="Welcome to Your Vue.js App"/> -->
@@ -26,6 +31,7 @@
 <script>
 import IndexDesktop from './components/IndexDesktop.vue'
 import Facturas from './components/Facturas.vue'
+import Cliente from './components/Clientes.vue'
 
 export default {
   name: 'App',
@@ -35,6 +41,7 @@ export default {
     }
   },
   components: {
+    Cliente,
     Facturas,
     IndexDesktop
   }
