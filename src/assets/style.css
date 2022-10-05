@@ -1,5 +1,4 @@
 .cuerpo {
-    background-color: #07215c;
     background-size: cover;
     background-repeat: no-repeat;
   }
@@ -31,7 +30,7 @@
   }
 
   .azul{
-    background-color: #07215c !important;
+    background-color: #5172c0 !important;
     color: white !important;
   }
   .azul h3, .azul h4, .azul h5, .azul h6{

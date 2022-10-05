@@ -4,7 +4,7 @@
         <div class="container ">
             <div class="container table-responsive bg-table-gen   my-4" style="font-size: 0.9rem">
             <div class="col-9 col-sm-8 col-md-10 mb-4">
-                <h5 class="text-start  letraMuyAzul"><strong>Ver Facturas</strong></h5>
+                <h5 class="text-start  letraAzul"><strong>Ver Facturas</strong></h5>
             </div>
             <table class="table text-center  mt-5" id="data-table">
                 <thead>
@@ -32,7 +32,7 @@
                                 data-bs-target="#exampleModal">
                                 Launch demo modal
                             </button> -->
-                            <Button @click="detalles(i)" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                            <Button class="botonAzul" @click="detalles(i)" data-bs-toggle="modal" data-bs-target="#exampleModal">
                                 Ver
                             </Button>
                         </td>

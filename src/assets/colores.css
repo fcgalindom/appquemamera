@@ -26,7 +26,9 @@
   }
 
 .letraBlanca{
-    color: white;
+    color: white !important;
+    background-color: #0560a5 !important;
+    border-color: #86afd8!important;
 }
 
 .azulOscuro{
@@ -85,11 +87,11 @@ th{
   }
 
   .azul{
-    background-color: #07215c;
-    color: white !important;
+    background-color: #86afd8;
+    
   }
   .azul h3, .azul h4, .azul h5, .azul h6{
-    color: white !important;
+    color: white ;
   }
 
   .azulClaro{
@@ -108,10 +110,10 @@ th{
   }
 
   .bg-table-gen {
-    border-color: #012357;
+    border-color:#0560a5 ;
   }
   .bg-table-gen th {
-    background-color: #045b9e !important;
+    background-color: #0560a5  !important;
     color: white;
 }
 
@@ -133,14 +135,28 @@ th{
   }
 
 .botones{
-    background-color: #0d76c7 !important;
+    background-color: #0560a5 !important;
     color: white !important;
+    border-color: #0560a5 !important;
 }
 
 .botonRojo{
     background-color: #c73434d7 !important;
     color: white !important;
+    border-color: #c73434d7 !important;
 }
+
+.botonAzul{
+  background-color: #218dec !important;
+  color: white !important;
+  border-color: #218dec  !important;
+}
+
 .letraAzul{
-    color: #045b9e ;
+    color: #045b9e !important;
+}
+
+.navibord{
+
+  border-color: #0560a5  !important;
 }
