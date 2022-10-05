@@ -1,53 +1,12 @@
 <template>
     <AppLayoutVuexy>
-        <div class="container mb-3">
-            <div class="row mt-4 mb-3">
-                <div class="col-9 col-sm-8 col-md-10">
-                    <h5 class="text-start  letraAzul"><strong>Ver Facturas</strong></h5>
-                </div>
-                <div class="col-3 col-sm-4 col-md-2 text-end">
-                    <div class="d-grid gap-2"></div>
-                </div>
-            </div>
-            <div class="container">
-                <div class="row mb-3">
-                    <div class="col-12 col-md-3">
-                        <div class="form-group">
-                            <label for="">Cliente</label>
-                            <input type="text" class="form-control" v-model="filters.cliente" />
-                        </div>
-                    </div>
-                    <div class="col-12 col-md-3">
-                        <div class="form-group">
-                            <label for="">Empleado</label>
-                            <input type="text" class="form-control" v-model="filters.empleado" />
-                        </div>
-                    </div>
-                    <div class="col-12 col-md-3">
-                        <div class="form-group">
-                            <label for="">Fecha</label>
-                            <input type="date" class="form-control" v-model="filters.fecha" />
-                        </div>
-                    </div>
-                    <div class="col-12 col-md-3">
-                        <div class="form-group">
-                            <label for="">Estado</label>
-                            <Select2 v-model="filters.estado" :options="states"
-                                :settings="{ width: '100%', placeholder: 'Seleccione' }" />
-                        </div>
-                    </div>
-                </div>
-                <div class="col-12 d-flex justify-content-center align-items-center mb-3">
-                    <Button @click="getResults()">Buscar</Button>
-                </div>
-            </div>
-        </div>
-        <div class="container-fluid mb-1">
-            <strong class="text-start">Se encontraron un total de {{ conteo }} registros</strong>
-        </div>
 
-        <div class="container-fluid table-responsive bg-table-gen" style="font-size: 0.9rem">
-            <table class="table text-center" id="data-table">
+        <div class="container ">
+            <div class="container table-responsive bg-table-gen   my-4" style="font-size: 0.9rem">
+            <div class="col-9 col-sm-8 col-md-10 mb-4">
+                <h5 class="text-start  letraMuyAzul"><strong>Ver Facturas</strong></h5>
+            </div>
+            <table class="table text-center  mt-5" id="data-table">
                 <thead>
                     <tr>
                         <th>Cliente</th>
@@ -55,9 +14,7 @@
                         <th>Valor Total</th>
                         <th>Estado</th>
                         <th>Fecha</th>
-                        <th>Editar</th>
-                        <th>Eliminar</th>
-                        <th>Ver</th>
+                        
                     </tr>
                 </thead>
                 <tbody>
@@ -67,33 +24,16 @@
                         <td>{{ (i?.total_bill) }}</td>
                         <td>{{ i?.estado?.name_state }}</td>
                         <td>{{ i?.created_at }}</td>
-                        <td>
-                            <ButtonSinFondo @click="llenarModal(i)">
-                                <font-awesome-icon icon="fa-solid fa-pencil" />
-                            </ButtonSinFondo>
-                        </td>
-                        <td>
-                            <ButtonSinFondo @click="eliminar(i)">
-                                <font-awesome-icon icon="fa-solid fa-trash-can" />
-                            </ButtonSinFondo>
-                        </td>
-                        <td>
-                            <ButtonSinFondo @click="detalles(i)">
-                                <font-awesome-icon icon="fa-solid fa-eye" />
-                            </ButtonSinFondo>
-                        </td>
+                       
                     </tr>
                 </tbody>
             </table>
             <!-- <pagination :users="patients" @pagi="getResults($event)" /> -->
         </div>
 
-        <foot />
-        <!-- </section> -->
+        </div>
 
-
-
-
+    
     </AppLayoutVuexy>
 </template>
 

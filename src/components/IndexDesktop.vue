@@ -1,9 +1,10 @@
 <template>
   <AppLayoutVuexy>
-    <div class="container ">
-      <div class="row mt-4 ">
-        <div class="col-9 col-sm-8 col-md-10">
-          <h5 class="text-start  letraAzul"><strong>Crear Facturas</strong></h5>
+   <div class="container mt-4  ">
+    <div class="container  ">
+      <div class="row ">
+        <div class="col-9 col-sm-8 col-md-10 ">
+          <h5 class="text-start "><strong>Crear Facturas</strong></h5>
         </div>
         <div class="container ">
           <div class="row">
@@ -47,7 +48,7 @@
 
 
 
-    <div class="container-fluid table-responsive text-center  bg-table-gen " style="font-size: 0.9rem">
+    <div class="container table-responsive text-center  bg-table-gen " style="font-size: 0.9rem">
       <table class="table">
         <thead>
           <tr>
@@ -80,6 +81,7 @@
         <Button @click="store()" class="botones">Generar factura</Button>
       </div>
     </div>
+   </div>
   </AppLayoutVuexy>
 </template>
 <script>
