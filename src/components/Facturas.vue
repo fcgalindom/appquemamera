@@ -15,6 +15,7 @@
                         <th>Estado</th>
                         <th>Fecha</th>
                         
+                        <th>Ver</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -25,6 +26,16 @@
                         <td>{{ i?.estado?.name_state }}</td>
                         <td>{{ i?.created_at }}</td>
                        
+
+                        <td>
+                            <!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                                data-bs-target="#exampleModal">
+                                Launch demo modal
+                            </button> -->
+                            <Button @click="detalles(i)" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                Ver
+                            </Button>
+                        </td>
                     </tr>
                 </tbody>
             </table>
@@ -32,6 +43,34 @@
         </div>
 
         </div>
+        <!-- <Modal id="show_bill" title="Detalle Factura"> -->
+        <Modal id="exampleModal" title="Detalle Factura">
+            <div class="flex-column ">
+                <table class="table bg-table-gen">
+
+                    <tbody>
+                        <tr>
+                            <th>Producto</th>
+                            <th>Precio Unidad</th>
+                            <th>Cantidad</th>
+                            <th>Valor Total</th>
+                        </tr>
+                        <tr v-for="(i,index) in details" :key="index">
+                            <td> {{i.product?.name_product}}</td>
+                            <td> {{i.num_product}} </td>
+                            <td>{{ parseVillegas(i.product?.price)}}</td>
+                            <td>{{ parseVillegas(i.val_product)}} </td>
+
+                        </tr>
+                    </tbody>
+                </table>
+
+            </div>
+        </Modal>
+        <!-- </section> -->
+
+
+
 
     
     </AppLayoutVuexy>
@@ -41,6 +80,9 @@
 <script>
 // import ButtonSinFondo from "@/ComponentsVuexy/ButtonSinFondo.vue";
 import Select2 from "vue3-select2-component";
+import Button from "./ComponentsVuexy/Button.vue";
+
+import Modal from "./ComponentsVuexy/Modal.vue";
 import { defineComponent } from "vue";
 import facturas_json from '@/database/facturas.json'
 import "datatables.net-bs4";
@@ -56,7 +98,8 @@ export default defineComponent({
         Select2,
         // AppLayoutVuexy,
         // ButtonSinFondo,
-        // Button,
+        Modal,
+        Button,
     },
     data() {
         return {
@@ -92,11 +135,11 @@ export default defineComponent({
         },
         editar() {
             axios.post(route("administrador.factura.update"), this.form).then((res) => {
-                this.$alert(res.data)
-                this.$closeModal('exampleModal')
+              
                 this.getResults();
             });
         },
+
         llenarModal(i) {
             for (const key in this.form) this.form[key] = i[key]
             this.$openModal('exampleModal')
@@ -124,9 +167,11 @@ export default defineComponent({
             })
         },
         detalles(i) {
-            axios.post(route('administrador.factuas.show'), { id: i.cod_bill }).then(res => {
+
+            axios.post('https://infinite-basin-30570.herokuapp.com/api/factura-detalles', { id: i.cod_bill }).then(res => {
                 this.details = res.data
-                this.$openModal('show_bill')
+                console.log(this.details);
+                //this.$openModal('show_bill')
             })
         },
         eliminar(i) {

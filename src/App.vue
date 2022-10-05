@@ -28,6 +28,7 @@
 <script>
 import IndexDesktop from './components/IndexDesktop.vue'
 import Facturas from './components/Facturas.vue'
+import Cliente from './components/Clientes.vue'
 
 export default {
   name: 'App',
@@ -37,6 +38,7 @@ export default {
     }
   },
   components: {
+    Cliente,
     Facturas,
     IndexDesktop
   }

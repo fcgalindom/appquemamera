@@ -31,8 +31,8 @@
             </div>
             <div class="col-12 col-md-1 ">
               <div class="">
-              <Button @click="agregarP()" class="botones"> Agregar </Button>
-            </div>
+                <Button @click="agregarP()" class="botones"> Agregar </Button>
+              </div>
             </div>
 
 
@@ -154,10 +154,19 @@ export default {
 
       };
 
+      if (this.pedidos.length == 0) {
+        alert('Debe haber al menos un pedido')
+        // Swal.fire('error', 'Debe haber al menos un pedido', 'error')
+        return
+      }
 
+      if (!this.cod_cliente) {
+        // Swal.fire('error', 'Selecciona un cliente', 'error')
+        alert('Selecciona un cliente')
+        return
+      }
 
-
-      axios.post("http://127.0.0.1:8000/api/cFactura", factura).then((res) => {
+      axios.post("https://infinite-basin-30570.herokuapp.com/api/cFactura", factura).then((res) => {
         if (res.data.status == 422) {
           alert(res.data.msg);
         } else if (res.data.status == 200) {

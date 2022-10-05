@@ -49,9 +49,10 @@ const pathJsonFacturas = path.join(__dirname, "./facturas.json");
 const pathClienteJson = path.join(__dirname, "./clients.json");
 
 
+
 const getClients = () =>{
  
-    axios.get('http://127.0.0.1:8000/api/clientes').then(res=>{
+    axios.get('https://infinite-basin-30570.herokuapp.com/api/clientes').then(res=>{
   
 
        writeJsonClientes(res.data);
@@ -63,7 +64,7 @@ const getClients = () =>{
 
 const getFacturas = () =>{
  
-  axios.get('http://127.0.0.1:8000/api/vFactura').then(res=>{
+  axios.get('https://infinite-basin-30570.herokuapp.com/api/vFactura').then(res=>{
 
 
     writeJsonFacturas(res.data);
@@ -75,7 +76,7 @@ const getFacturas = () =>{
 
 const getProductos = () =>{
   
-  axios.get('http://127.0.0.1:8000/api/productos').then(res=>{
+  axios.get('https://infinite-basin-30570.herokuapp.com/api/productos').then(res=>{
 
 
      writeJsonProductos(res.data);
@@ -88,7 +89,7 @@ const getProductos = () =>{
 const getFactura = () =>{
 
 
-  axios.get('http://127.0.0.1:8000/api/vFactura').then(res=>{
+  axios.get('https://infinite-basin-30570.herokuapp.com/api/vFactura').then(res=>{
 
 
      writeJsonProductos(res.data);
