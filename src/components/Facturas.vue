@@ -1,23 +1,12 @@
 <template>
     <AppLayoutVuexy>
-        <div class="container mb-3">
-            <div class="row mt-4 mb-3">
-                <div class="col-9 col-sm-8 col-md-10">
-                    <h5 class="text-start  letraAzul"><strong>Ver Facturas</strong></h5>
-                </div>
 
+        <div class="container ">
+            <div class="container table-responsive bg-table-gen   my-4" style="font-size: 0.9rem">
+            <div class="col-9 col-sm-8 col-md-10 mb-4">
+                <h5 class="text-start  letraAzul"><strong>Ver Facturas</strong></h5>
             </div>
-            <div class="container">
-
-
-            </div>
-        </div>
-        <div class="container-fluid mb-1">
-            <strong class="text-start">Se encontraron un total de {{ conteo }} registros</strong>
-        </div>
-
-        <div class="container-fluid table-responsive bg-table-gen" style="font-size: 0.9rem">
-            <table class="table text-center" id="data-table">
+            <table class="table text-center  mt-5" id="data-table">
                 <thead>
                     <tr>
                         <th>Cliente</th>
@@ -25,6 +14,7 @@
                         <th>Valor Total</th>
                         <th>Estado</th>
                         <th>Fecha</th>
+                        
                         <th>Ver</th>
                     </tr>
                 </thead>
@@ -35,13 +25,14 @@
                         <td>{{ (i?.total_bill) }}</td>
                         <td>{{ i?.estado?.name_state }}</td>
                         <td>{{ i?.created_at }}</td>
+                       
 
                         <td>
                             <!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal"
                                 data-bs-target="#exampleModal">
                                 Launch demo modal
                             </button> -->
-                            <Button @click="detalles(i)" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                            <Button class="botonAzul" @click="detalles(i)" data-bs-toggle="modal" data-bs-target="#exampleModal">
                                 Ver
                             </Button>
                         </td>
@@ -51,6 +42,7 @@
             <!-- <pagination :users="patients" @pagi="getResults($event)" /> -->
         </div>
 
+        </div>
         <!-- <Modal id="show_bill" title="Detalle Factura"> -->
         <Modal id="exampleModal" title="Detalle Factura">
             <div class="flex-column ">
@@ -80,6 +72,7 @@
 
 
 
+    
     </AppLayoutVuexy>
 </template>
 

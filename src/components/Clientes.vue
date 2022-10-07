@@ -6,20 +6,13 @@
                     <h5 class="mb-3"><strong>Crear Factura</strong></h5>
                 </div>
                 <div class="col-sm-12 col-md-2">
-                    <Button @click="vaciarModal()" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                    <Button @click="vaciarModal()" data-bs-toggle="modal" data-bs-target="#crear_cliente">
                         <font-awesome-icon icon="fa-solid fa-plus" />
                         Crear Cliente
                     </Button>
                 </div>
-           
-               
-
-                
             </div>
-
         </div>
-
-    
         <div class="row">
             <div class="col-12 col-md-6">
                 <div class="form-group">
@@ -27,10 +20,9 @@
                     <Label>{{parseVillegas(calcular_total())}}</Label>
                 </div>
             </div>
-            
         </div>
 
-        <Modal id="exampleModal" title="Cliente">
+        <Modal id="crear_cliente" title="Cliente">
             <div class="row">
                 <div class="container">
                     <div class="col-12 mb-3">
@@ -40,7 +32,7 @@
                     <div class="col-12 mb-3">
                         <Label required="1">Telefono</Label>
                         <Input type="number" v-model="form.telefono" :error="errors.telefono"
-                            @keypress="$isNumber($event, form.telefono)" />
+                            @keypress="isNumber($event, form.telefono)" />
                     </div>
                     <div class="col-12 mb-3">
                         <Label >Email</Label>
@@ -92,7 +84,7 @@ export default {
     },
     methods: {
         getDataTable() {
-            this.$tabla('data-table')
+            // this.$tabla('data-table')
         },
         parseVillegas(value = '0') {
             let response = parseInt(value).toLocaleString('es-CO')
@@ -108,11 +100,11 @@ export default {
             });
         },
         storeCliente() {
-            axios.post(route("web.eCliente"), this.form).then((res) => {
+            axios.post('http://127.0.0.1:8000/api/api-client-store', this.form).then((res) => {
                 if (res.data.status == 422) {
                     Swal.fire('Error', res.data.msg, 'error');
                 } else if (res.data.status == 200) {
-                    this.ver();
+                    // this.ver();
                     Swal.fire('Éxito', res.data.msg, 'success');
                 }
             }).catch(errors => {
@@ -191,6 +183,15 @@ export default {
             this.total = total
             return total
         },
+        isNumber(e, texto = [], cantidad = 20) {
+            console.log('numero = ', texto);
+            if (texto.length >= cantidad) e.preventDefault();
+
+            let char = String.fromCharCode(e.keyCode); // Get the character
+            if (/^[+0123456789]+$/.test(char)) return true;
+            // Match with regex
+            else e.preventDefault(); // If not match, don't add to input text
+        }
         
     },
 };
