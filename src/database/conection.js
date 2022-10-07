@@ -55,7 +55,9 @@ const getClients = () =>{
     axios.get('https://infinite-basin-30570.herokuapp.com/api/clientes').then(res=>{
   
 
-       writeJsonClientes(res.data);
+       console.log(res.data);
+        writeJsonClientes(res.data);
+       
     })
 
 
@@ -67,7 +69,9 @@ const getFacturas = () =>{
   axios.get('https://infinite-basin-30570.herokuapp.com/api/vFactura').then(res=>{
 
 
-    writeJsonFacturas(res.data);
+     console.log(res.data);
+     writeJsonFacturas(res.data);
+    
   })
 
 
@@ -179,6 +183,8 @@ getFacturas();
 //function repetirCadaSegundo() {
   //identificadorIntervaloDeTiempo = setInterval(mandarMensaje, 1000);
 //}
+
+
 
 function mandarMensaje() {
 

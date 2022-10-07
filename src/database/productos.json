@@ -3,7 +3,7 @@
         "cod_product": 1,
         "cod_category": 1,
         "name_product": "Pantalon",
-        "price": 6000,
+        "price": "6000",
         "state": 1,
         "created_at": null,
         "updated_at": null
@@ -12,7 +12,7 @@
         "cod_product": 2,
         "cod_category": 1,
         "name_product": "Camiseta",
-        "price": 6000,
+        "price": "6000",
         "state": 1,
         "created_at": null,
         "updated_at": null
@@ -21,7 +21,7 @@
         "cod_product": 3,
         "cod_category": 1,
         "name_product": "Camisa",
-        "price": 6000,
+        "price": "6000",
         "state": 1,
         "created_at": null,
         "updated_at": null
@@ -30,7 +30,7 @@
         "cod_product": 4,
         "cod_category": 1,
         "name_product": "Falda",
-        "price": 6000,
+        "price": "6000",
         "state": 1,
         "created_at": null,
         "updated_at": null
@@ -39,7 +39,7 @@
         "cod_product": 5,
         "cod_category": 1,
         "name_product": "Jean",
-        "price": 6000,
+        "price": "6000",
         "state": 1,
         "created_at": null,
         "updated_at": null
@@ -48,7 +48,7 @@
         "cod_product": 6,
         "cod_category": 1,
         "name_product": "Vestido de paño",
-        "price": 12000,
+        "price": "12000",
         "state": 1,
         "created_at": null,
         "updated_at": null
@@ -57,7 +57,7 @@
         "cod_product": 7,
         "cod_category": 1,
         "name_product": "Saco",
-        "price": 6000,
+        "price": "6000",
         "state": 1,
         "created_at": null,
         "updated_at": null
@@ -66,7 +66,7 @@
         "cod_product": 8,
         "cod_category": 1,
         "name_product": "Vestido",
-        "price": 6000,
+        "price": "6000",
         "state": 1,
         "created_at": null,
         "updated_at": null
@@ -75,7 +75,7 @@
         "cod_product": 9,
         "cod_category": 1,
         "name_product": "Chaqueta",
-        "price": 10000,
+        "price": "10000",
         "state": 1,
         "created_at": null,
         "updated_at": null
@@ -84,7 +84,7 @@
         "cod_product": 10,
         "cod_category": 1,
         "name_product": "Chaqueta de Plumas",
-        "price": 15000,
+        "price": "15000",
         "state": 1,
         "created_at": null,
         "updated_at": null
@@ -93,7 +93,7 @@
         "cod_product": 11,
         "cod_category": 1,
         "name_product": "Cubrelecho",
-        "price": 25000,
+        "price": "25000",
         "state": 1,
         "created_at": null,
         "updated_at": null
@@ -102,7 +102,7 @@
         "cod_product": 12,
         "cod_category": 1,
         "name_product": "Cubrelecho de plumas",
-        "price": 35000,
+        "price": "35000",
         "state": 1,
         "created_at": null,
         "updated_at": null
@@ -111,7 +111,7 @@
         "cod_product": 13,
         "cod_category": 1,
         "name_product": "Libra de ropa",
-        "price": 5000,
+        "price": "5000",
         "state": 1,
         "created_at": null,
         "updated_at": null
