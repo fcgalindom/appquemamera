@@ -151,7 +151,7 @@ getClients();
 
 getProductos();
 
-getFacturas();
+
 
 
 
@@ -178,13 +178,13 @@ getFacturas();
 
 //// Arreglar
 
-//let identificadorIntervaloDeTiempo;
+let identificadorIntervaloDeTiempo;
 
-//function repetirCadaSegundo() {
-  //identificadorIntervaloDeTiempo = setInterval(mandarMensaje, 1000);
-//}
+function repetirCadaSegundo() {
+  identificadorIntervaloDeTiempo = setInterval(getFacturas(), 2000);
+}
 
-
+repetirCadaSegundo();
 
 function mandarMensaje() {
 

@@ -12,11 +12,11 @@
             "name": "Laura",
             "email": "laura@gmail.com",
             "email_verified_at": null,
-            "two_factor_confirmed_at": null,
             "tel": "3101531242",
             "state": 1,
             "created_at": null,
             "updated_at": null,
+            "two_factor_confirmed_at": null,
             "profile_photo_url": "https://ui-avatars.com/api/?name=L&color=7F9CF5&background=EBF4FF"
         }
     },
@@ -33,11 +33,11 @@
             "name": "Sofia",
             "email": "sofia@gmail.com",
             "email_verified_at": null,
-            "two_factor_confirmed_at": null,
             "tel": "3101231232",
             "state": 1,
             "created_at": null,
             "updated_at": null,
+            "two_factor_confirmed_at": null,
             "profile_photo_url": "https://ui-avatars.com/api/?name=S&color=7F9CF5&background=EBF4FF"
         }
     }
