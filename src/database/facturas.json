@@ -377,7 +377,385 @@
                 "created_at": null,
                 "updated_at": null
             }
+        },
+        {
+            "cod_bill": 7,
+            "cod_client": 1,
+            "cod_employee": 1,
+            "cod_state": 2,
+            "cod_bill_type": 1,
+            "address": "Lavanderia Lavamar",
+            "price_delivery": "1",
+            "total_bill": "138000",
+            "created_at": "07-10-2022",
+            "updated_at": "2022-10-07T05:51:59.000000Z",
+            "deleted_at": null,
+            "cliente": {
+                "cod_client": 1,
+                "cod_user": 4,
+                "address": null,
+                "num_cods": 0,
+                "created_at": null,
+                "updated_at": null,
+                "usuario": {
+                    "cod_user": 4,
+                    "cod_user_type": 3,
+                    "name": "Laura",
+                    "email": "laura@gmail.com",
+                    "email_verified_at": null,
+                    "tel": "3101531242",
+                    "state": 1,
+                    "created_at": null,
+                    "updated_at": null,
+                    "two_factor_confirmed_at": null,
+                    "profile_photo_url": "https://ui-avatars.com/api/?name=L&color=7F9CF5&background=EBF4FF"
+                }
+            },
+            "empleado": {
+                "cod_employee": 1,
+                "cod_user": 2,
+                "address": "Calle 45 #87-98",
+                "salary": "0",
+                "documentId": "522627282",
+                "created_at": null,
+                "updated_at": null,
+                "deleted_at": null,
+                "usuario": {
+                    "cod_user": 2,
+                    "cod_user_type": 2,
+                    "name": "Jorge",
+                    "email": "lavamar2@gmail.com",
+                    "email_verified_at": null,
+                    "tel": "3101231142",
+                    "state": 1,
+                    "created_at": null,
+                    "updated_at": null,
+                    "two_factor_confirmed_at": null,
+                    "profile_photo_url": "https://ui-avatars.com/api/?name=J&color=7F9CF5&background=EBF4FF"
+                }
+            },
+            "estado": {
+                "cod_state": 2,
+                "name_state": "En Proceso",
+                "created_at": null,
+                "updated_at": null
+            }
+        },
+        {
+            "cod_bill": 40,
+            "cod_client": 1,
+            "cod_employee": 1,
+            "cod_state": 2,
+            "cod_bill_type": 1,
+            "address": "Lavanderia Lavamar",
+            "price_delivery": "1",
+            "total_bill": "138000",
+            "created_at": "07-10-2022",
+            "updated_at": "2022-10-07T16:47:51.000000Z",
+            "deleted_at": null,
+            "cliente": {
+                "cod_client": 1,
+                "cod_user": 4,
+                "address": null,
+                "num_cods": 0,
+                "created_at": null,
+                "updated_at": null,
+                "usuario": {
+                    "cod_user": 4,
+                    "cod_user_type": 3,
+                    "name": "Laura",
+                    "email": "laura@gmail.com",
+                    "email_verified_at": null,
+                    "tel": "3101531242",
+                    "state": 1,
+                    "created_at": null,
+                    "updated_at": null,
+                    "two_factor_confirmed_at": null,
+                    "profile_photo_url": "https://ui-avatars.com/api/?name=L&color=7F9CF5&background=EBF4FF"
+                }
+            },
+            "empleado": {
+                "cod_employee": 1,
+                "cod_user": 2,
+                "address": "Calle 45 #87-98",
+                "salary": "0",
+                "documentId": "522627282",
+                "created_at": null,
+                "updated_at": null,
+                "deleted_at": null,
+                "usuario": {
+                    "cod_user": 2,
+                    "cod_user_type": 2,
+                    "name": "Jorge",
+                    "email": "lavamar2@gmail.com",
+                    "email_verified_at": null,
+                    "tel": "3101231142",
+                    "state": 1,
+                    "created_at": null,
+                    "updated_at": null,
+                    "two_factor_confirmed_at": null,
+                    "profile_photo_url": "https://ui-avatars.com/api/?name=J&color=7F9CF5&background=EBF4FF"
+                }
+            },
+            "estado": {
+                "cod_state": 2,
+                "name_state": "En Proceso",
+                "created_at": null,
+                "updated_at": null
+            }
+        },
+        {
+            "cod_bill": 41,
+            "cod_client": 1,
+            "cod_employee": 1,
+            "cod_state": 2,
+            "cod_bill_type": 1,
+            "address": "Lavanderia Lavamar",
+            "price_delivery": "1",
+            "total_bill": "276000",
+            "created_at": "07-10-2022",
+            "updated_at": "2022-10-07T16:48:28.000000Z",
+            "deleted_at": null,
+            "cliente": {
+                "cod_client": 1,
+                "cod_user": 4,
+                "address": null,
+                "num_cods": 0,
+                "created_at": null,
+                "updated_at": null,
+                "usuario": {
+                    "cod_user": 4,
+                    "cod_user_type": 3,
+                    "name": "Laura",
+                    "email": "laura@gmail.com",
+                    "email_verified_at": null,
+                    "tel": "3101531242",
+                    "state": 1,
+                    "created_at": null,
+                    "updated_at": null,
+                    "two_factor_confirmed_at": null,
+                    "profile_photo_url": "https://ui-avatars.com/api/?name=L&color=7F9CF5&background=EBF4FF"
+                }
+            },
+            "empleado": {
+                "cod_employee": 1,
+                "cod_user": 2,
+                "address": "Calle 45 #87-98",
+                "salary": "0",
+                "documentId": "522627282",
+                "created_at": null,
+                "updated_at": null,
+                "deleted_at": null,
+                "usuario": {
+                    "cod_user": 2,
+                    "cod_user_type": 2,
+                    "name": "Jorge",
+                    "email": "lavamar2@gmail.com",
+                    "email_verified_at": null,
+                    "tel": "3101231142",
+                    "state": 1,
+                    "created_at": null,
+                    "updated_at": null,
+                    "two_factor_confirmed_at": null,
+                    "profile_photo_url": "https://ui-avatars.com/api/?name=J&color=7F9CF5&background=EBF4FF"
+                }
+            },
+            "estado": {
+                "cod_state": 2,
+                "name_state": "En Proceso",
+                "created_at": null,
+                "updated_at": null
+            }
+        },
+        {
+            "cod_bill": 42,
+            "cod_client": 2,
+            "cod_employee": 1,
+            "cod_state": 2,
+            "cod_bill_type": 1,
+            "address": "Lavanderia Lavamar",
+            "price_delivery": "1",
+            "total_bill": "276000",
+            "created_at": "09-10-2022",
+            "updated_at": "2022-10-09T03:32:16.000000Z",
+            "deleted_at": null,
+            "cliente": {
+                "cod_client": 2,
+                "cod_user": 5,
+                "address": null,
+                "num_cods": 0,
+                "created_at": null,
+                "updated_at": null,
+                "usuario": {
+                    "cod_user": 5,
+                    "cod_user_type": 3,
+                    "name": "Sofia",
+                    "email": "sofia@gmail.com",
+                    "email_verified_at": null,
+                    "tel": "3101231232",
+                    "state": 1,
+                    "created_at": null,
+                    "updated_at": null,
+                    "two_factor_confirmed_at": null,
+                    "profile_photo_url": "https://ui-avatars.com/api/?name=S&color=7F9CF5&background=EBF4FF"
+                }
+            },
+            "empleado": {
+                "cod_employee": 1,
+                "cod_user": 2,
+                "address": "Calle 45 #87-98",
+                "salary": "0",
+                "documentId": "522627282",
+                "created_at": null,
+                "updated_at": null,
+                "deleted_at": null,
+                "usuario": {
+                    "cod_user": 2,
+                    "cod_user_type": 2,
+                    "name": "Jorge",
+                    "email": "lavamar2@gmail.com",
+                    "email_verified_at": null,
+                    "tel": "3101231142",
+                    "state": 1,
+                    "created_at": null,
+                    "updated_at": null,
+                    "two_factor_confirmed_at": null,
+                    "profile_photo_url": "https://ui-avatars.com/api/?name=J&color=7F9CF5&background=EBF4FF"
+                }
+            },
+            "estado": {
+                "cod_state": 2,
+                "name_state": "En Proceso",
+                "created_at": null,
+                "updated_at": null
+            }
+        },
+        {
+            "cod_bill": 43,
+            "cod_client": 1,
+            "cod_employee": 1,
+            "cod_state": 2,
+            "cod_bill_type": 1,
+            "address": "Lavanderia Lavamar",
+            "price_delivery": "1",
+            "total_bill": "138000",
+            "created_at": "09-10-2022",
+            "updated_at": "2022-10-09T03:32:16.000000Z",
+            "deleted_at": null,
+            "cliente": {
+                "cod_client": 1,
+                "cod_user": 4,
+                "address": null,
+                "num_cods": 0,
+                "created_at": null,
+                "updated_at": null,
+                "usuario": {
+                    "cod_user": 4,
+                    "cod_user_type": 3,
+                    "name": "Laura",
+                    "email": "laura@gmail.com",
+                    "email_verified_at": null,
+                    "tel": "3101531242",
+                    "state": 1,
+                    "created_at": null,
+                    "updated_at": null,
+                    "two_factor_confirmed_at": null,
+                    "profile_photo_url": "https://ui-avatars.com/api/?name=L&color=7F9CF5&background=EBF4FF"
+                }
+            },
+            "empleado": {
+                "cod_employee": 1,
+                "cod_user": 2,
+                "address": "Calle 45 #87-98",
+                "salary": "0",
+                "documentId": "522627282",
+                "created_at": null,
+                "updated_at": null,
+                "deleted_at": null,
+                "usuario": {
+                    "cod_user": 2,
+                    "cod_user_type": 2,
+                    "name": "Jorge",
+                    "email": "lavamar2@gmail.com",
+                    "email_verified_at": null,
+                    "tel": "3101231142",
+                    "state": 1,
+                    "created_at": null,
+                    "updated_at": null,
+                    "two_factor_confirmed_at": null,
+                    "profile_photo_url": "https://ui-avatars.com/api/?name=J&color=7F9CF5&background=EBF4FF"
+                }
+            },
+            "estado": {
+                "cod_state": 2,
+                "name_state": "En Proceso",
+                "created_at": null,
+                "updated_at": null
+            }
+        },
+        {
+            "cod_bill": 44,
+            "cod_client": 1,
+            "cod_employee": 1,
+            "cod_state": 2,
+            "cod_bill_type": 1,
+            "address": "Lavanderia Lavamar",
+            "price_delivery": "1",
+            "total_bill": "138000",
+            "created_at": "09-10-2022",
+            "updated_at": "2022-10-09T03:32:16.000000Z",
+            "deleted_at": null,
+            "cliente": {
+                "cod_client": 1,
+                "cod_user": 4,
+                "address": null,
+                "num_cods": 0,
+                "created_at": null,
+                "updated_at": null,
+                "usuario": {
+                    "cod_user": 4,
+                    "cod_user_type": 3,
+                    "name": "Laura",
+                    "email": "laura@gmail.com",
+                    "email_verified_at": null,
+                    "tel": "3101531242",
+                    "state": 1,
+                    "created_at": null,
+                    "updated_at": null,
+                    "two_factor_confirmed_at": null,
+                    "profile_photo_url": "https://ui-avatars.com/api/?name=L&color=7F9CF5&background=EBF4FF"
+                }
+            },
+            "empleado": {
+                "cod_employee": 1,
+                "cod_user": 2,
+                "address": "Calle 45 #87-98",
+                "salary": "0",
+                "documentId": "522627282",
+                "created_at": null,
+                "updated_at": null,
+                "deleted_at": null,
+                "usuario": {
+                    "cod_user": 2,
+                    "cod_user_type": 2,
+                    "name": "Jorge",
+                    "email": "lavamar2@gmail.com",
+                    "email_verified_at": null,
+                    "tel": "3101231142",
+                    "state": 1,
+                    "created_at": null,
+                    "updated_at": null,
+                    "two_factor_confirmed_at": null,
+                    "profile_photo_url": "https://ui-avatars.com/api/?name=J&color=7F9CF5&background=EBF4FF"
+                }
+            },
+            "estado": {
+                "cod_state": 2,
+                "name_state": "En Proceso",
+                "created_at": null,
+                "updated_at": null
+            }
         }
     ],
-    "conteo": 6
+    "conteo": 12
 }

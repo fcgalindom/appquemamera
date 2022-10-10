@@ -152,6 +152,9 @@ getClients();
 getProductos();
 
 
+getFacturas();
+
+
 
 
 
@@ -177,92 +180,6 @@ getProductos();
 
 
 //// Arreglar
-
-let identificadorIntervaloDeTiempo;
-
-function repetirCadaSegundo() {
-  identificadorIntervaloDeTiempo = setInterval(getFacturas(), 2000);
-}
-
-repetirCadaSegundo();
-
-function mandarMensaje() {
-
-  readFactura().then((data) => {
-    ;
-
-    if (data == 1) {
-
-      console.log("ojala");
-    }
-    else {
-
-
-
-
-      var bills = JSON.parse(data);
-      var total = bills[0].total;
-      var productos = bills[0].productos;
-      
-
-
-      const text = 'INSERT INTO bills(cod_client, cod_employee , cod_state , cod_bill_type , address , price_delivery , total_bill) VALUES($1, $2,$3,$4,$5,$6,$7) RETURNING *'
-      const values = [1, 1, 1, 1, "calle 170", 1,total]
-      // callback
-      client.query(text, values, (err, res) => {
-        if (err) {
-          console.log(err.stack)
-        } else {
-          console.log(res.rows[0])
-          
-          
-
-          console.log()
-          // { name: 'brianc', email: 'brian.m.carlson@gmail.com' }
-          for (let index = 0; index < productos.length; index++) {
-            const element = productos[index];
-
-            console.log(element)
-            console.log(res.rows[0].cod_bill)
-        
-         
-
-
-            const text2 = 'INSERT INTO detail_bill_products(cod_product, cod_bill , num_product , val_product) VALUES($1, $2,$3,$4) RETURNING *'
-            const values2 = [element.idProducto, res.rows[0].cod_bill, element.cantidad, element.precio]
-            client.query(text2, values2, (err, res) => {
-              if (err) {
-                console.log(err.stack)
-              } else {
-                console.log(res.rows[0])
-                
-               
-              }
-            })
-            
-            
-           
-            
-          }
-
-         
-
-        }
-      })
-    
-     
-
-
-
-      
-      writeJsonFactura(1);
-
-    };
-  });
-
-}
-
-
 
 
 

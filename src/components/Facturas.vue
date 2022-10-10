@@ -1,46 +1,47 @@
 <template>
     <AppLayoutVuexy>
-
         <div class="container ">
             <div class="container table-responsive bg-table-gen   my-4" style="font-size: 0.9rem">
-            <div class="col-9 col-sm-8 col-md-10 mb-4">
-                <h5 class="text-start  letraAzul"><strong>Ver Facturas</strong></h5>
-            </div>
-            <table class="table text-center  mt-5" id="data-table">
-                <thead>
-                    <tr>
-                        <th>Cliente</th>
-                        <th>Empleado</th>
-                        <th>Valor Total</th>
-                        <th>Estado</th>
-                        <th>Fecha</th>
-                        
-                        <th>Ver</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr v-for="(i, index) in facturas" v-bind:key="index">
-                        <td>{{ i?.cliente?.usuario?.name }}</td>
-                        <td>{{ i?.empleado?.usuario?.name }}</td>
-                        <td>{{ (i?.total_bill) }}</td>
-                        <td>{{ i?.estado?.name_state }}</td>
-                        <td>{{ i?.created_at }}</td>
-                       
+                <div class="col-9 col-sm-8 col-md-10 mb-4">
+                    <h5 class="text-start  letraAzul"><strong>Ver Facturas</strong></h5>
+                </div>
+                <h1 class="text-danger">{{domain}}</h1>
+                <table class="table text-center  mt-5" id="data-table">
+                    <thead>
+                        <tr>
+                            <th>Cliente</th>
+                            <th>Empleado</th>
+                            <th>Valor Total</th>
+                            <th>Estado</th>
+                            <th>Fecha</th>
 
-                        <td>
-                            <!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                            <th>Ver</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr v-for="(i, index) in facturas" v-bind:key="index">
+                            <td>{{ i?.cliente?.usuario?.name }}</td>
+                            <td>{{ i?.empleado?.usuario?.name }}</td>
+                            <td>{{ (i?.total_bill) }}</td>
+                            <td>{{ i?.estado?.name_state }}</td>
+                            <td>{{ i?.created_at }}</td>
+
+
+                            <td>
+                                <!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal"
                                 data-bs-target="#exampleModal">
                                 Launch demo modal
                             </button> -->
-                            <Button class="botonAzul" @click="detalles(i)" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                Ver
-                            </Button>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-            <!-- <pagination :users="patients" @pagi="getResults($event)" /> -->
-        </div>
+                                <Button class="botonAzul" @click="detalles(i)" data-bs-toggle="modal"
+                                    data-bs-target="#exampleModal">
+                                    Ver
+                                </Button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <!-- <pagination :users="patients" @pagi="getResults($event)" /> -->
+            </div>
 
         </div>
         <!-- <Modal id="show_bill" title="Detalle Factura"> -->
@@ -72,7 +73,7 @@
 
 
 
-    
+
     </AppLayoutVuexy>
 </template>
 
@@ -88,6 +89,7 @@ import facturas_json from '@/database/facturas.json'
 import "datatables.net-bs4";
 export default defineComponent({
     props: {
+        domain: String,
         // empleados: Array,
         // clientes: Array,
         // states: Array,
@@ -114,7 +116,7 @@ export default defineComponent({
                 price_delivery: '',
                 address: '',
             },
-            facturas: facturas_json.facturas,
+            facturas: [],
             filters: { cliente: '', empleado: '', fecha: '', estado: '' },
             conteo: facturas_json.conteo,
             details: []
@@ -124,18 +126,18 @@ export default defineComponent({
         this.getResults();
     },
     methods: {
+
         getResults() {
-            this.tabla('data-table')
-            // axios
-            //     .post(route("administrador.factura.list"), this.filters)
-            //     .then((res) => {
-            //         this.facturas = res.data.facturas;
-            //         this.conteo = res.data.conteo;
-            //     });
+            let url = this.domain + 'api/vFactura'
+            axios.get(url).then(res => {
+                this.facturas = res.data.facturas;
+                this.conteo = res.data.conteo;
+                this.tabla('data-table')
+            });
         },
         editar() {
             axios.post(route("administrador.factura.update"), this.form).then((res) => {
-              
+
                 this.getResults();
             });
         },
@@ -146,7 +148,9 @@ export default defineComponent({
         },
 
         vaciarModal() {
+
             for (const key in this.form) this.form[key] = ''
+
         },
         eliminar(i) {
             Swal.fire({
@@ -167,11 +171,9 @@ export default defineComponent({
             })
         },
         detalles(i) {
-
-            axios.post('https://infinite-basin-30570.herokuapp.com/api/factura-detalles', { id: i.cod_bill }).then(res => {
+            let url = this.domain + 'api/factura-detalles'
+            axios.post(url, { id: i.cod_bill }).then(res => {
                 this.details = res.data
-                console.log(this.details);
-                //this.$openModal('show_bill')
             })
         },
         eliminar(i) {

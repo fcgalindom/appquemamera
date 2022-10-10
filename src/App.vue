@@ -14,21 +14,16 @@
     </nav>
     <div class="tab-content fullScreen azul" id="nav-tabContent">
       <div class="tab-pane fade show active pb-3" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
-        <Facturas  />
+        <Facturas :domain="domain" />
       </div>
       <div class="tab-pane fade " id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
-        <IndexDesktop />
+        <IndexDesktop :domain="domain" />
 
       </div>
       <div class="tab-pane fade pb-3" id="nav-cliente" role="tabpanel" aria-labelledby="nav-cliente-tab">
       <Cliente />
     </div>
-     
-      <!-- <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">...</div> -->
     </div>
-    <!-- <HelloWorld msg="Welcome to Your Vue.js App"/> -->
-    <!-- <IndexDesktop /> -->
-    <!-- <Facturas /> -->
   </div>
 </template>
 
@@ -41,7 +36,8 @@ export default {
   name: 'App',
   data() {
     return {
-      message: 'Hello ',
+      // domain: 'http://127.0.0.1:8000/',
+      domain: 'https://infinite-basin-30570.herokuapp.com/',
     }
   },
   components: {

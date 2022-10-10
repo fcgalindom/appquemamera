@@ -56,7 +56,11 @@ import Select2 from 'vue3-select2-component';
 export default {
     props: {
         clientes: Array,
-        products: Array
+        products: Array,
+        domain: {
+            type: String,
+            required: true
+        },
     },
     data() {
         return {
@@ -84,7 +88,7 @@ export default {
     },
     methods: {
         getDataTable() {
-            // this.$tabla('data-table')
+            // this.$tablag('data-table')
         },
         parseVillegas(value = '0') {
             let response = parseInt(value).toLocaleString('es-CO')
@@ -100,7 +104,8 @@ export default {
             });
         },
         storeCliente() {
-            axios.post('http://127.0.0.1:8000/api/api-client-store', this.form).then((res) => {
+            let url = this.domain + 'api/api-client-store'
+            axios.post(url, this.form).then((res) => {
                 if (res.data.status == 422) {
                     Swal.fire('Error', res.data.msg, 'error');
                 } else if (res.data.status == 200) {
